@@ -1,8 +1,9 @@
-# Python for AI
+﻿# Python for AI
 
 A learning workspace for Python and AI experiments, including:
-- Basic Python practice scripts
-- A FastAPI-based LLM gateway with multi-provider fallback
+
+- Basic Python practice scripts (email validation, classes)
+- A FastAPI-based LLM gateway with multi-provider fallback and Redis caching
 - Lab notebooks and assignment files for model training practice
 
 ## Prerequisites
@@ -13,12 +14,16 @@ A learning workspace for Python and AI experiments, including:
 
 ## Project Structure
 
-- `gateway.py`: FastAPI streaming gateway with provider fallback and Redis cache
-- `test_client.py`: Simple streaming client to test the gateway endpoint
-- `learn_python.py`: Basic Python input/validation practice script
-- `class.py`: Small Python class/function practice module
-- `lab/`: Notebooks, assignment files, and datasets
-- `requirements.txt`: Python dependencies
+```
+python-for-ai/
+├── gateway.py          # FastAPI streaming gateway with provider fallback and Redis cache
+├── test_client.py      # Simple streaming client to test the gateway endpoint
+├── learn_python.py     # Basic Python input/validation practice script
+├── class.py            # Small Python class/function practice module
+├── requirements.txt    # Python dependencies
+├── README.md           # This file
+└── lab/                # Notebooks, assignment files, and datasets
+```
 
 ## Quick Start
 
@@ -37,11 +42,11 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 2.1 Configure provider keys
+### 3. Configure provider keys
 
-Set valid provider keys in `gateway.py` before running real requests.
+Set valid provider keys in `gateway.py` (the `PROVIDERS` list) before running real requests.
 
-### 3. Run the gateway
+### 4. Run the gateway
 
 ```powershell
 python gateway.py
@@ -49,7 +54,7 @@ python gateway.py
 
 The API starts on `http://localhost:8000`.
 
-### 4. Test streaming response
+### 5. Test streaming response
 
 In another terminal:
 
@@ -60,7 +65,8 @@ python test_client.py
 ## API Endpoint
 
 - `POST /v1/chat/completions`
-- Request body:
+
+Request body:
 
 ```json
 {
@@ -68,13 +74,13 @@ python test_client.py
 }
 ```
 
-- Response: Server-Sent Event (SSE) stream in OpenAI-style delta format.
+Response: Server-Sent Event (SSE) stream in OpenAI-style delta format.
 
 ## Notes
 
 - Update provider keys in `gateway.py` before production use.
 - Redis is expected on `localhost:6379` for caching.
-- The `lab/` folder contains learning assets and may include large files.
+- The `lab/` folder contains learning assets and may include large files (ignored by git).
 
 ## Troubleshooting
 
