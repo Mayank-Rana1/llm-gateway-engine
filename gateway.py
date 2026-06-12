@@ -230,5 +230,10 @@ async def handel_chat_request(data: UserPayload):
     return StreamingResponse(stream_as_get(),media_type="text/event-stream")
 
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok", "service": "llm-gateway"}
+
+
 if __name__=="__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
