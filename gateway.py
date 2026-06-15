@@ -196,6 +196,7 @@ async def handel_chat_request(data: UserPayload):
             now=time.time()
             for provider in PROVIDERS:
                 if provider["cooldown"]>now:
+                    print(f"Skipping {provider['name']} (cooldown active)")
                     continue
 
                 print(f"Trying provider: {provider['name']}...")
