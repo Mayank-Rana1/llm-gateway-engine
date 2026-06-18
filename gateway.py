@@ -183,8 +183,8 @@ async def handel_chat_request(data: UserPayload):
     cached_payload = None
     try:
         cached_payload= await redis_client.get(cache_key)
-    except:
-        print(f"Redis Error (No cache): {Exception}")
+    except Exception as exc:
+        print(f"Redis Error (No cache): {exc}")
     if(cached_payload):
         return StreamingResponse(re_stream_bytes(cached_payload), media_type="text/event-stream")
 
