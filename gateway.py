@@ -1,3 +1,5 @@
+"""FastAPI-based LLM gateway with multi-provider fallback and Redis caching."""
+
 import httpx
 from fastapi import FastAPI
 from pydantic import BaseModel
