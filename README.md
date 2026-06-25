@@ -1,28 +1,28 @@
-﻿# Python for AI
+﻿# llm-gateway-engine
 
-A learning workspace for Python and AI experiments, including:
+A high-throughput, asynchronous API Gateway for LLMs featuring failover routing, circuit breaking, and SSE streaming.
 
-- Basic Python practice scripts (email validation, classes)
-- A FastAPI-based LLM gateway with multi-provider fallback and Redis caching
-- Lab notebooks and assignment files for model training practice
+## High-Level Work
 
-## Prerequisites
-
-- Python 3.10+
-- Redis running locally on `localhost:6379`
-- Internet access for provider API calls
+- **Asynchronous API Gateway** built with FastAPI for handling LLM chat completion requests.
+- **Multi-provider failover routing** across Groq, OpenRouter, Gemini, and Deepseek endpoints with automatic fallback on failure.
+- **Circuit breaking via cooldown timers** — providers that fail are temporarily skipped to avoid repeated requests to unhealthy endpoints.
+- **Server-Sent Events (SSE) streaming** delivering OpenAI-style delta chunks to clients in real time.
+- **Redis-backed response caching** to reduce latency and repeated provider calls for repeated prompts.
+- **Health check endpoint** (`/health`) for monitoring gateway availability.
+- **Streaming test client** (`test_client.py`) to verify end-to-end SSE responses.
 
 ## Project Structure
 
 ```
-python-for-ai/
-├── gateway.py          # FastAPI streaming gateway with provider fallback and Redis cache
-├── test_client.py      # Simple streaming client to test the gateway endpoint
+llm-gateway-engine/
+├── gateway.py          # FastAPI streaming gateway with provider fallback, cooldown, and Redis cache
+├── test_client.py      # SSE streaming client to test the gateway endpoint
 ├── learn_python.py     # Basic Python input/validation practice script
 ├── class.py            # Small Python class/function practice module
 ├── requirements.txt    # Python dependencies
 ├── README.md           # This file
-└── lab/                # Notebooks, assignment files, and datasets
+└── lab/                # Notebooks, assignment files, and datasets (ignored by git)
 ```
 
 ## Quick Start
@@ -75,6 +75,10 @@ Request body:
 ```
 
 Response: Server-Sent Event (SSE) stream in OpenAI-style delta format.
+
+### Health Check
+
+- `GET /health` returns `{"status": "ok", "service": "llm-gateway"}`.
 
 ## Notes
 
