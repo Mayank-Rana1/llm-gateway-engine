@@ -58,7 +58,7 @@ This repository reflects Phase 1 (Core Gateway Engine). Future architectural pha
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/llm-gateway-engine.git](https://github.com/YOUR_USERNAME/llm-gateway-engine.git)
+git clone [https://github.com/Mayank-Rana1/llm-gateway-engine.git](https://github.com/Mayank-Rana1/llm-gateway-engine.git)
 cd llm-gateway-engine
 
 ```
@@ -78,15 +78,7 @@ pip install -r requirements.txt
 
 ```
 
-4. Configure environment variables:
-Copy `.env.example` to `.env` and fill in your API credentials:
-
-```bash
-cp .env.example .env
-
-```
-
-5. Launch the gateway server:
+4. Launch the gateway server:
 
 ```bash
 uvicorn gateway:app --reload --port 8000
@@ -108,6 +100,3 @@ uvicorn gateway:app --reload --port 8000
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-```
-
-```
