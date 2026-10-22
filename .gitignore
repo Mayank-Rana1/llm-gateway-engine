@@ -1,7 +1,0 @@
-.venv/
-.lab/
-__pycache__/
-*.pyc
-.vscode/
-.gitignore
-class.py
