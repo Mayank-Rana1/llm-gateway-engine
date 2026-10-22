@@ -5,6 +5,12 @@ A learning workspace for Python and AI experiments, including:
 - A FastAPI-based LLM gateway with multi-provider fallback
 - Lab notebooks and assignment files for model training practice
 
+## Prerequisites
+
+- Python 3.10+
+- Redis running locally on `localhost:6379`
+- Internet access for provider API calls
+
 ## Project Structure
 
 - `gateway.py`: FastAPI streaming gateway with provider fallback and Redis cache
@@ -30,6 +36,10 @@ python -m venv .venv
 ```powershell
 pip install -r requirements.txt
 ```
+
+### 2.1 Configure provider keys
+
+Set valid provider keys in `gateway.py` before running real requests.
 
 ### 3. Run the gateway
 
