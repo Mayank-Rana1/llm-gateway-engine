@@ -75,3 +75,9 @@ python test_client.py
 - Update provider keys in `gateway.py` before production use.
 - Redis is expected on `localhost:6379` for caching.
 - The `lab/` folder contains learning assets and may include large files.
+
+## Troubleshooting
+
+- If `test_client.py` fails to connect, ensure `gateway.py` is running on port `8000`.
+- If responses are empty, verify API keys and model names in `gateway.py`.
+- If cache is not working, check that Redis is running and reachable.
